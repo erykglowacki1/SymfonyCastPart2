@@ -1,6 +1,7 @@
 <?php
 require 'layout/header.php';
 ?>
+<?php require 'lib/functions.php'?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ?>
@@ -25,7 +26,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $bio = '';
     }
-    var_dump($name, $breed, $weight, $bio);die;
+    $pets = get_pets();
+    $newPet = array(
+        'name' => $name,
+        'breed' => $breed,
+        'weight' => $weight,
+        'bio' => $bio,
+        'age' => '',
+        'image' => '',
+    );
+    $pets[] = $newPet;
+
+    save_pets($pets);
+
+    header('Location: /start');
+    die();
+
+
+
 }
 
 

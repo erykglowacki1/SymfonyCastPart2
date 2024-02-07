@@ -7,3 +7,11 @@ function get_pets()
 
     return $pets;
 }
+
+function save_pets($petsToSave)
+{
+    var_dump($petsToSave);die();
+    $json = json_encode($pets,JSON_PRETTY_PRINT);
+    file_put_contents('data/pets.json',$json);
+
+}
